@@ -12,9 +12,6 @@ Vagrant.configure("2") do |config|
        vb.memory = "1024"
    end
 
-   config.ssh.username = 'vagrant'
-   config.ssh.password = 'vagrant'
-
    config.vm.synced_folder ".", "/vagrant", disabled: true
 
    config.vm.synced_folder "./www", "/var/www",

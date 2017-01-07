@@ -64,3 +64,10 @@ You will be asked this params
 - Put the placeholders
     - {{PROJECT_NAME}} for the project name      
     - {{PROJECT_DOMAIN}} for the project domain
+
+
+## FAQ
+
+### In symfony, I get an error about permissions in sessions folder.
+
+In *app/config/config.yml*, set session.save_path to */var/lib/php/sessions*.
