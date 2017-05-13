@@ -12,6 +12,9 @@ Vagrant.configure("2") do |config|
        vb.memory = "1024"
    end
 
+   config.ssh.private_key_path = "/Path/to/id_rsa"
+   config.ssh.forward_agent = true
+
    config.vm.synced_folder ".", "/vagrant", disabled: true
 
    config.vm.synced_folder "./www", "/var/www",

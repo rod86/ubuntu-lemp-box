@@ -62,11 +62,28 @@ You will be asked this params
 
 - In *bin/templates*, create the template host file with extension *conf*.
 - Put the placeholders
-    - {{PROJECT_NAME}} for the project name      
-    - {{PROJECT_DOMAIN}} for the project domain
+    - *{{PROJECT_NAME}}* for the project name      
+    - *{{PROJECT_DOMAIN}}* for the project domain
 
 
 ## FAQ
+
+### When I start the virtual machine, I see *"Warning: Connection timeout. Retrying..."* when it connects via SSH with a private key
+
+You have to add your private key to the virtual machine authorized_keys file.
+
+- You need a public and private SSH key. If you don't have them, generate them using the *ssh-keygen* command. Leave the passphrase empty.
+
+- Edit the Vagrantfile and update the setting *config.ssh.private_key_path* with the absolute path to the id_rsa file.
+
+- Start the virtual machine.
+
+- Copy the contents of .
+
+- Connect via SSH to the virtual machine and add the key from the file *id_rsa.pub* in *~/.ssh/authorized_keys*.
+
+- Restart the virtual machine and the SSH connection should work.
+
 
 ### In symfony, I get an error about permissions in sessions folder.
 
