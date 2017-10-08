@@ -1,8 +1,8 @@
 # Symfony project
-# Config for {{PROJECT_DOMAIN}}
+# Config for {{PROJECT_HOST}}
 
 server {
-    server_name {{PROJECT_DOMAIN}};
+    server_name {{PROJECT_HOST}};
     root /var/www/{{PROJECT_NAME}}/web;
 
     location / {
@@ -35,6 +35,6 @@ server {
       return 404;
     }
 
-    error_log /var/log/nginx/{{PROJECT_NAME}}_error.log;
-    access_log /var/log/nginx/{{PROJECT_NAME}}_access.log;
+    error_log /var/log/nginx/{{PROJECT_HOST}}_error.log;
+    access_log /var/log/nginx/{{PROJECT_HOST}}_access.log;
 }

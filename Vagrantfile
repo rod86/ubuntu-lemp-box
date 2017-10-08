@@ -12,7 +12,9 @@ Vagrant.configure("2") do |config|
        vb.memory = "1024"
    end
 
-   config.ssh.private_key_path = "/Path/to/id_rsa"
+   config.ssh.username = "vagrant"
+   config.ssh.password = "vagrant"
+   #config.ssh.private_key_path = "~/.ssh/id_rsa"
    config.ssh.forward_agent = true
 
    config.vm.synced_folder ".", "/vagrant", disabled: true
@@ -23,5 +25,4 @@ Vagrant.configure("2") do |config|
      :mount_options => ["dmode=775","fmode=666"]
 
     config.vm.synced_folder "./bin", "/home/vagrant/bin"
-
 end
