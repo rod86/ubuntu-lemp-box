@@ -13,16 +13,16 @@ then
 fi
 
 # get parameters
-while getopts ":h:n:t:" opt; do
+while getopts ":h:n:t:w:" opt; do
     case $opt in
         h)
             project_host="$OPTARG"
             ;;
-        n)
-            project_name="$OPTARG"
-            ;;
         t)
             project_type="$OPTARG"
+            ;;
+        w)
+            project_webroot="$OPTARG"
             ;;
         \?)
             echo "Invalid option -$OPTARG" >&2
@@ -43,12 +43,6 @@ then
     exit 1
 fi
 
-# project name
-if [ -z $project_name ]
-then
-    project_name=$project_host
-fi
-
 # project type
 if [ -z $project_type ]
 then
@@ -61,6 +55,14 @@ then
     exit 1
 fi
 
+# project directory name
+project_dir=$project_host
+
+# Append webroot directory
+if [ ! -z $project_webroot ]
+then
+    project_dir="${project_dir}/${project_webroot}"
+fi
 
 ### GENERATE HOST FILE ###
 
@@ -73,8 +75,8 @@ echo "Creating host files..."
 cp $template $virtualhost
 
 # replace values
-sed -i s/{{PROJECT_NAME}}/$project_name/g $virtualhost
-sed -i s/{{PROJECT_HOST}}/$project_host/g $virtualhost
+sed -i "s|{{PROJECT_DIR}}|$project_dir|g" $virtualhost
+sed -i "s|{{PROJECT_HOST}}|$project_host|g" $virtualhost
 
 echo "Enabling host..."
 ln -s $virtualhost ${virtualhost/sites-available/sites-enabled}

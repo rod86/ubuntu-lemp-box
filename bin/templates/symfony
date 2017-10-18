@@ -3,7 +3,7 @@
 
 server {
     server_name {{PROJECT_HOST}};
-    root /var/www/{{PROJECT_NAME}}/web;
+    root /var/www/{{PROJECT_DIR}}/web;
 
     location / {
         # try to serve file directly, fallback to app.php
