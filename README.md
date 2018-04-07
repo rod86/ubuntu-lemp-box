@@ -63,7 +63,7 @@ Command Options
 
 | Option | Description | Example |
 | ------ | ----------- | ------- |
-| **-d** | Project domain | *dev.myapp.com* |
+| **-d** | Project hostname | *dev.myapp.com* |
 | **-t** *(Optional)* | Template host file to use. If not provided, the template *default* will be used | *symfony* |
 | **-w** *(Optional)* | Nginx root directory. If not provided, root directory is the project root directory  | *public* |
 
@@ -88,7 +88,7 @@ $ sudo bin/generatehost.sh -h dev.myapp.com -t symfony
 
 | Placeholder | Description | Examples |
 | ----------- | ----------- | ------- |
-| **{{PROJECT_DIR}}** | Project directory with the web root directory if provided | *dev.myapp.com*, *dev.myapp.com/public* |
+| **{{PROJECT_DIR}}** | Project directory with the web root directory if provided | *dev.myapp.com* *dev.myapp.com/public* |
 | **{{PROJECT_HOST}}** | Project hostname | *dev.myapp.com* |
 
 
