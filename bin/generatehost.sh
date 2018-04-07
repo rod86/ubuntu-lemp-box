@@ -13,7 +13,7 @@ then
 fi
 
 # get parameters
-while getopts ":h:n:t:w:" opt; do
+while getopts ":h:t:w:" opt; do
     case $opt in
         h)
             project_host="$OPTARG"
@@ -84,7 +84,7 @@ ln -s $virtualhost ${virtualhost/sites-available/sites-enabled}
 
 ### RESTART SERVICES ###
 
-echo "Restarting services..."
+echo "Restarting Nginx..."
 service nginx restart
 
 echo "Host generated successfully"

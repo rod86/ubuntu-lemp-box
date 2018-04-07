@@ -5,8 +5,8 @@ A basic LEMP vagrant box for development
 ## Server specs
 
 - Ubuntu Server 16.04 LTS Xenial Xerus
-- Nginx
-- PHP 7 FPM
+- Nginx 1.10.3
+- PHP 7.0 FPM
 - MySQL 5.7
 - Composer
 - Xdebug
@@ -55,24 +55,41 @@ The default SSH auth method is via password. If you want to use a private SSH ke
 This script generates a host file. It must be run as a root user.
 
 ```
-$ cd /home/vagrant
-$ sudo bin/generatehost.sh -h myapp.dev -n myapp -t symfony
+$ cd ~
+$ sudo bin/generatehost.sh -h dev.myapp.com
 ```
 
-Parameters
+Command Options
 
 | Option | Description | Example |
 | ------ | ----------- | ------- |
-| **-d** | Project domain | *myapp.dev* |
-| **-n** *(Optional)* | Project folder name. If not provided, the project domain will be used as a name | *myapp* |
+| **-d** | Project domain | *dev.myapp.com* |
 | **-t** *(Optional)* | Template host file to use. If not provided, the template *default* will be used | *symfony* |
+| **-w** *(Optional)* | Nginx root directory. If not provided, root directory is the project root directory  | *public* |
+
+#### Examples
+
+- Create a dev.myapp.com host with public directory using the default host template.
+
+```
+$ sudo bin/generatehost.sh -h dev.myapp.com -w public
+```
+
+- Create a dev.myapp.com host using the symfony host template.
+
+```
+$ sudo bin/generatehost.sh -h dev.myapp.com -t symfony
+```
+
 
 #### How to create a custom host template
 
-- In *bin/templates*, create the template host file.
-- Put the placeholders
-    - *{{PROJECT_NAME}}* for the project name      
-    - *{{PROJECT_DOMAIN}}* for the project domain
+- In *bin/templates*, create the template host file with the below placeholders.
+
+| Placeholder | Description | Examples |
+| ----------- | ----------- | ------- |
+| **{{PROJECT_DIR}}** | Project directory with the web root directory if provided | *dev.myapp.com*, *dev.myapp.com/public* |
+| **{{PROJECT_HOST}}** | Project hostname | *dev.myapp.com* |
 
 
 ## FAQ
